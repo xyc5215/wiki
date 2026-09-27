@@ -1,0 +1,21 @@
+# 依赖
+node_modules/
+website/node_modules/
+
+# 构建 / 投影产物
+website/.generated/
+website/.dist/
+website/.cache/
+
+# 本地工具数据（含项目记忆，不入库）
+.workbuddy/
+
+# 操作系统 / 编辑器
+.DS_Store
+Thumbs.db
+*.swp
+*.swx
+
+# 环境变量
+.env
+.env.local
