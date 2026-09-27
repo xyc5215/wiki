@@ -29,11 +29,8 @@ npm install --no-save --workspaces=false \
 
 ## 启动开发服务器
 
-> 注意：WorkBuddy 的安全删除防护会拦截 Vite 清理临时目录，导致服务在依赖预构建时退出。
-> 启动时需关闭该防护（仅影响 Vite 自己的缓存清理，安全）：
-
 ```bash
-CODEBUDDY_SAFE_DELETE_ENABLED=0 npm run dev
+npm run dev
 ```
 
 启动后访问 http://127.0.0.1:5173/ 。

@@ -8,10 +8,6 @@
 
 这是 npm 可选依赖（optional）的已知 bug。显式补装匹配版本的原生包即可（见[本地运行](../develop/local-run.zh.md)）。
 
-## 服务启动后突然退出？
-
-多半是 WorkBuddy 安全删除防护拦截了 Vite 清理 `.cache` 临时目录。启动时加 `CODEBUDDY_SAFE_DELETE_ENABLED=0`（见[本地运行](../develop/local-run.zh.md)）。
-
 ## 怎么新增一页？
 
 在 `docs/` 下新建 Markdown，并在 `website/docs.ts` 的清单里加一条 `pairedPages` 记录——中英文源文件分别为 `xxx.md` 与 `xxx.zh.md`，二者都要存在，否则投影会报错。

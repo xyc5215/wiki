@@ -29,10 +29,8 @@ npm install --no-save --workspaces=false \
 
 ## Start the dev server
 
-> Note: WorkBuddy's safe-delete guard blocks Vite from cleaning temp dirs, which crashes the server during dependency optimization. Disable it at startup (only affects Vite's own cache cleanup, safe):
-
 ```bash
-CODEBUDDY_SAFE_DELETE_ENABLED=0 npm run dev
+npm run dev
 ```
 
 Then open http://127.0.0.1:5173/ .

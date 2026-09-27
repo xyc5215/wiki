@@ -34,7 +34,7 @@ const generatedRoot = resolve(root, 'website/.generated')
  * @returns The configured public ref, or `master`.
  */
 export function resolveRepositoryRef(environment: NodeJS.ProcessEnv): string {
-  return environment.DOCS_REPOSITORY_REF ?? 'master'
+  return environment.DOCS_REPOSITORY_REF ?? 'main'
 }
 
 interface Replacement {

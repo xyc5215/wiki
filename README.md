@@ -40,10 +40,10 @@ cd website
 npm install --workspaces=false
 ```
 
-启动开发服务器（注意下面的安全删除防护开关）：
+启动开发服务器：
 
 ```bash
-CODEBUDDY_SAFE_DELETE_ENABLED=0 npm run dev
+npm run dev
 ```
 
 然后访问 <http://127.0.0.1:5173/> 。
@@ -68,11 +68,6 @@ npm install --no-save --workspaces=false \
 > 这两个包已写入 `website/package.json` 的 `optionalDependencies`，正常情况下 `npm install` 会自动装好；
 > 在 Linux（如 Cloudflare 构建机）上会因 os/cpu 不匹配自动跳过，由 esbuild/rollup 自身的 optional 依赖提供 Linux 版本。
 
-### 关于 WorkBuddy 安全删除防护
-
-本机 WorkBuddy 的安全删除防护会拦截 Vite 清理 `.cache` 临时目录，导致服务在依赖预构建时退出。
-启动时加 `CODEBUDDY_SAFE_DELETE_ENABLED=0` 即可（仅影响 Vite 自己的缓存清理，安全）。
-
 ## 增减页面
 
 1. 在 `docs/` 下新建 Markdown，中英文源文件需成对出现：`xxx.zh.md` 与 `xxx.md`（二者都要存在，否则投影报错）。
@@ -89,11 +84,11 @@ npm install --no-save --workspaces=false \
 2. 构建设置：
    - **Build command**：`cd website && npm install --workspaces=false && npm run build`
    - **Build output directory**：`website/.dist`
-3. 保存并部署。之后每次 push 到 `master` 自动重新部署。
+3. 保存并部署。之后每次 push 到 `main` 自动重新部署。
 
 ### 方式二：GitHub Actions 自动部署
 
-仓库已包含 `.github/workflows/deploy.yml`，push 到 `master` 时自动构建并部署。
+仓库已包含 `.github/workflows/deploy.yml`，push 到 `main` 时自动构建并部署。
 需要在仓库 **Settings → Secrets and variables → Actions** 中添加两个密钥：
 
 | 密钥 | 说明 |
@@ -101,8 +96,7 @@ npm install --no-save --workspaces=false \
 | `CLOUDFLARE_API_TOKEN` | Cloudflare API Token，需有 `Pages` 编辑权限（建议用 `Cloudflare Pages: Edit` 模板） |
 | `CLOUDFLARE_ACCOUNT_ID` | Cloudflare 账户 ID（Dashboard 右下角或 `wrangler whoami`） |
 
-> 编辑链接使用分支 `master`（`https://github.com/xyc5215/wiki/edit/master/...`）。
-> 若你的仓库默认分支是 `main`，请改用 `main`，并相应修改 `.github/workflows/deploy.yml` 的触发分支。
+> 编辑链接使用分支 `main`（`https://github.com/xyc5215/wiki/edit/main/...`）。
 
 ## 许可证
 

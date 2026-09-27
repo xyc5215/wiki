@@ -6,6 +6,7 @@ import type { MermaidViewer } from './mermaid-viewer.ts'
 import type { ImageViewer } from './image-viewer.ts'
 import type { MediaViewer } from './media-viewer.ts'
 import { PageMarkdownActions } from './page-markdown-actions.ts'
+import ReadingProgress from './ReadingProgress.vue'
 import './media-viewer.css'
 import './code-group.css'
 import './page-markdown-actions.css'
@@ -40,14 +41,17 @@ export default {
         images?.dispose()
         media?.close()
       })
-      return () => h(DefaultTheme.Layout, null, {
-        'doc-before': () => {
-          const path: unknown = frontmatter.value.rawMarkdownPath
-          return !page.value.isNotFound && typeof path === 'string'
-            ? h(PageMarkdownActions, { key: `${route.path}:${lang.value}:${path}`, path: `${site.value.base}${path}`, lang: lang.value })
-            : null
-        },
-      })
+      return () => [
+        h(ReadingProgress),
+        h(DefaultTheme.Layout, null, {
+          'doc-before': () => {
+            const path: unknown = frontmatter.value.rawMarkdownPath
+            return !page.value.isNotFound && typeof path === 'string'
+              ? h(PageMarkdownActions, { key: `${route.path}:${lang.value}:${path}`, path: `${site.value.base}${path}`, lang: lang.value })
+              : null
+          },
+        }),
+      ]
     },
   }),
 } satisfies Theme
